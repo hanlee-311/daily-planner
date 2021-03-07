@@ -4,3 +4,6 @@ var saveBtn = document.getElementById("save");
 
 displayDate.innerHTML = todaysDate;
 
+// function timeStampColor () {
+//     if (moment())
+// };
