@@ -1,25 +1,53 @@
 var displayDate = document.getElementById("currentDay");
 var todaysDate = moment().format('dddd MMMM DD, YYYY');
-var saveBtn = document.getElementById("save");
 var hours = new Date().getHours();
-// var hours = moment(hour).format('h');
 
+//Displays today's date in jumnotron
 displayDate.innerHTML = todaysDate;
-console.log(hours + "AM");
-
+$(document).ready(function() {
 //changes the color of the planner by the time
+function hourUpdater () {
 $('.input-group').each(function () {
-    console.log($('.input-group-text', this).text());
-    var currentTime = $('.input-group-text', this).text();
+    // console.log($('.input-group-text', this).text());
+    var currentTime = $('.input-group-text', this).attr('id');
     var timeStampColor = $('.color', this);
 
-    if (currentTime === hours + "AM" || currentTime === hours + "PM") {
+    if (currentTime == hours) {
         timeStampColor.addClass('present');
-    } else if (currentTime < hours + "AM" || currentTime < hours + "PM") {
+        timeStampColor.removeClass('future');
+        timeStampColor.removeClass('past');
+    } else if (currentTime > hours) {
         timeStampColor.addClass('future');
+        timeStampColor.removeClass('past');
+        timeStampColor.removeClass('present');
     } else {
         timeStampColor.addClass('past');
-    }});
+        timeStampColor.removeClass('present');
+        timeStampColor.removeClass('future');
+    };
+})};
 
-   
- 
+setInterval(hourUpdater, 15000);
+
+hourUpdater();
+
+//Populate text area from local storage
+$('#hour-9 .form-control').val(localStorage.getItem('9'));
+$('#hour-10 .form-control').val(localStorage.getItem('10'));
+$('#hour-11 .form-control').val(localStorage.getItem('11'));
+$('#hour-12 .form-control').val(localStorage.getItem('12'));
+$('#hour-13 .form-control').val(localStorage.getItem('13'));
+$('#hour-14 .form-control').val(localStorage.getItem('14'));
+$('#hour-15 .form-control').val(localStorage.getItem('15'));
+$('#hour-16 .form-control').val(localStorage.getItem('16'));
+$('#hour-17 .form-control').val(localStorage.getItem('17'));
+
+//Button Listener
+$('.saveBtn').on('click', function () {
+    var activity = $(this).siblings('.form-control').val().trim();
+    var hour = $(this).siblings('.input-group-text').attr('id');
+    
+    localStorage.setItem(hour, activity);
+    console.log(localStorage);
+})
+});
