@@ -1,4 +1,4 @@
 var displayDate = document.getElementById("date");
-var todaysDate = new Date();
+var todaysDate = moment().format('dddd MMMM DD, YYYY');
 
-displayDate.innerHTML = todaysDate;
+displayDate.innerHTML = todaysDate
