@@ -8,7 +8,7 @@ $(document).ready(function() {
 //changes the color of the planner by the time
 function hourUpdater () {
 $('.input-group').each(function () {
-    // console.log($('.input-group-text', this).text());
+    console.log($('.input-group-text', this).text());
     var currentTime = $('.input-group-text', this).attr('id');
     var timeStampColor = $('.color', this);
 

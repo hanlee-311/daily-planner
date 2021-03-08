@@ -1,7 +1,12 @@
+:root {
+  background-color: lightblue;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
+  background-color: lightblue;
 }
 
 textarea{
@@ -19,6 +24,12 @@ textarea{
   color: black;
   border-radius: 0;
   border-bottom: 10px solid black;
+}
+
+#currentDay:before {
+  content: "\f274";
+  font-family: FontAwesome;
+  padding-right: .5em;
 }
 
 .description{
