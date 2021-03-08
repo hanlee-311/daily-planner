@@ -29,7 +29,7 @@ $('.input-group').each(function () {
 
     //runs function that refreshes page for the next day
     var mightnight = new Date().getHours('h m s');
-    console.log(mightnight);
+    // console.log(mightnight);
     if (mightnight === 20) {clearActivities};
 })};
 
@@ -56,7 +56,7 @@ $('.saveBtn').on('click', function () {
     localStorage.setItem(hour, activity);
     console.log(localStorage);
 })
-});
+
 
 //Refreshes page for the next day
 function clearActivities () {
@@ -71,4 +71,4 @@ function clearActivities () {
     window.localStorage.removeItem('16');
     window.localStorage.removeItem('17');
 };
-
+});
