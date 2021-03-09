@@ -1,12 +1,25 @@
+//Refreshes page for the next day
+function clearActivities () {
+    window.localStorage.removeItem('9');
+    window.localStorage.removeItem('10');
+    window.localStorage.removeItem('11');
+    window.localStorage.removeItem('12');
+    window.localStorage.removeItem('13');
+    window.localStorage.removeItem('14');
+    window.localStorage.removeItem('15');
+    window.localStorage.removeItem('16');
+    window.localStorage.removeItem('17');
+};
+
+//changes the color of the planner by the time
+$(document).ready(function() {
+function hourUpdater () {
 var displayDate = document.getElementById("currentDay");
 var todaysDate = moment().format('dddd MMMM DD, YYYY');
 
 //Displays today's date in jumnotron
 displayDate.innerHTML = todaysDate;
 
-//changes the color of the planner by the time
-$(document).ready(function() {
-function hourUpdater () {
 $('.input-group').each(function () {
     // console.log($('.input-group-text', this).text());
     var currentTime = $('.input-group-text', this).attr('id');
@@ -26,11 +39,6 @@ $('.input-group').each(function () {
         timeStampColor.removeClass('present');
         timeStampColor.removeClass('future');
     };
-
-    //runs function that refreshes page for the next day
-    var mightnight = new Date().getHours('h m s');
-    // console.log(mightnight);
-    if (mightnight === 18) {clearActivities};
 })};
 
 setInterval(hourUpdater, 15000);
@@ -52,23 +60,10 @@ $('#hour-17 .form-control').val(localStorage.getItem('17'));
 $('.saveBtn').on('click', function () {
     var activity = $(this).siblings('.form-control').val().trim();
     var hour = $(this).siblings('.input-group-text').attr('id');
+    var currentDay = 
     
     localStorage.setItem(hour, activity);
     console.log(localStorage);
 })
-
-
-//Refreshes page for the next day
-function clearActivities () {
-    console.log("ran")
-    window.localStorage.removeItem('9');
-    window.localStorage.removeItem('10');
-    window.localStorage.removeItem('11');
-    window.localStorage.removeItem('12');
-    window.localStorage.removeItem('13');
-    window.localStorage.removeItem('14');
-    window.localStorage.removeItem('15');
-    window.localStorage.removeItem('16');
-    window.localStorage.removeItem('17');
-};
 });
+
