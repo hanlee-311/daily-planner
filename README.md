@@ -13,12 +13,15 @@ When you want to update the time slot with your activity for that hour, click on
 
 And don't worry- the scheduler will always present the date at the top of the page, so you will never have to second guess!
 
+For your convience, when the day changes, your planner will clear and be ready for the following day. Try it out, and keep organized!
+
 ## Functions of Work Day Scheduler
 - Date is displayed on the top of the page 
 - Time slots in green are future hours. Time slots in red is the current hour. Time slots in grey are past hours. 
 - Date and hour color will update real-time to reflect hour changes 
 - User can write in their activities in the time slots and save
 - Saved activities will reload when the user returns to the page
+- Planner will clear itself when the day changes
 
 
 

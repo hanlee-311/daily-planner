@@ -11,7 +11,7 @@ function clearActivities () {
     window.localStorage.removeItem('17');
 };
 
-//changes the color of the planner by the time
+//Updates date and colors by set interval
 $(document).ready(function() {
 function hourUpdater () {
 var displayDate = document.getElementById("currentDay");
@@ -20,8 +20,8 @@ var todaysDate = moment().format('dddd MMMM DD, YYYY');
 //Displays today's date in jumnotron
 displayDate.innerHTML = todaysDate;
 
+//changes the color of the planner by the time
 $('.input-group').each(function () {
-    // console.log($('.input-group-text', this).text());
     var currentTime = $('.input-group-text', this).attr('id');
     var hours = new Date().getHours();
     var timeStampColor = $('.color', this);
@@ -39,7 +39,20 @@ $('.input-group').each(function () {
         timeStampColor.removeClass('present');
         timeStampColor.removeClass('future');
     };
-})};
+})
+
+//Checks to see if the day changed    
+if (localStorage.getItem('day') !== null) {
+    var currentDay = moment().format('DD');
+    var previousDay = localStorage.getItem('day');
+    
+    if (currentDay !== previousDay) {
+        clearActivities();
+        window.localStorage.removeItem('day');
+    } else {
+        return;
+    }
+}};
 
 setInterval(hourUpdater, 15000);
 
@@ -60,10 +73,12 @@ $('#hour-17 .form-control').val(localStorage.getItem('17'));
 $('.saveBtn').on('click', function () {
     var activity = $(this).siblings('.form-control').val().trim();
     var hour = $(this).siblings('.input-group-text').attr('id');
-    var currentDay = 
+    var currentDay = moment().format('DD');
     
     localStorage.setItem(hour, activity);
-    console.log(localStorage);
+
+    if (localStorage.getItem('day') == null) {
+        localStorage.setItem('day', currentDay);
+    }
 })
 });
-
